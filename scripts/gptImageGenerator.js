@@ -326,16 +326,21 @@ class GptImage2Generator {
       throw new Error('响应中无 data 或为空');
     }
 
+    // 如果 response_format 被禁用，API 默认返回 url 格式，自动切换
+    const effectiveFormat = this.disabledRequestParams.has('response_format')
+      ? (data[0].b64_json ? 'b64_json' : 'url')
+      : this.config.responseFormat;
+
     for (let i = 0; i < data.length; i += 1) {
       const item = data[i];
       const base = this.generateFileName(i);
-      const tentative = path.join(this.sessionDir, `${base}${this.config.responseFormat === 'url' ? '.jpg' : '.img'}`);
+      const tentative = path.join(this.sessionDir, `${base}${effectiveFormat === 'url' ? '.jpg' : '.img'}`);
 
       try {
-        if (this.config.responseFormat === 'b64_json' && item.b64_json) {
+        if (effectiveFormat === 'b64_json' && item.b64_json) {
           const p = this.saveB64ToFile(item.b64_json, tentative);
           this.generatedImages.push({ index: i, filePath: p, source: 'b64_json' });
-        } else if (this.config.responseFormat === 'url' && item.url) {
+        } else if (effectiveFormat === 'url' && item.url) {
           const u = new URL(item.url);
           const ext = path.extname(u.pathname) || '.png';
           const p = path.join(this.sessionDir, `${base}${ext}`);
@@ -345,7 +350,7 @@ class GptImage2Generator {
           throw new Error('缺少 b64_json 或 url 字段，与 --format 不一致');
         }
       } catch (e) {
-        this.generatedImages.push({ index: i, filePath: null, error: e.message, source: this.config.responseFormat });
+        this.generatedImages.push({ index: i, filePath: null, error: e.message, source: effectiveFormat });
       }
     }
 
