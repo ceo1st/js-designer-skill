@@ -17,14 +17,24 @@ js-designer-skill/
 ├── index.js                主命令分发入口
 ├── cli/
 │   └── index.js            CLI 包装层
+├── references/
+│   ├── README.md           本地参考子目录索引（默认不提交）
+│   ├── aipoch/             AIPOCH 品牌视觉规范与官网 CSS
+│   ├── cyber-taoist/       JS Cyber-Taoist 风格系统
+│   ├── open-design/        Editorial Monocle 风格参考
+│   └── youtube-thumbnail/  视频封面生成体系
 ├── lib/
 │   ├── api.js              业务 API：generateImage / editImage / reviewImages / checkConsistency
-│   └── runtimeConfig.js    环境变量与默认值
+│   ├── runtimeConfig.js    环境变量与默认值
+│   ├── referencePaths.js   references/ 子目录路径常量
+│   └── boardSlides.js      AIPOCH 董事会幻灯片数据
 ├── scripts/
 │   ├── gpt-image-generate.js            CLI 入口：文生图
 │   ├── gpt-image-edit.js                CLI 入口：参考图编辑
 │   ├── gpt-image-review.js              CLI 入口：7 维评审
 │   ├── gpt-image-consistency.js         CLI 入口：系列一致性
+│   ├── gen-single.js                    单张 AIPOCH 董事会幻灯片生成
+│   ├── generate-board-slides.js         批量 AIPOCH 董事会幻灯片生成
 │   ├── gptImageGenerator.js             底层：/v1/images/generations
 │   ├── gptImageEditor.js                底层：/v1/images/edits
 │   ├── gptImageReviewer.js              底层：多模态 /v1/chat/completions
@@ -171,8 +181,20 @@ node cli/index.js review --config-file review-config.json --model gpt-4o-mini
 4. 信息图优先保证正确和可读，再考虑装饰。
 5. 系列图先锁定统一变量，再放开局部变化。
 
+## 本地参考资料
+
+`references/` 按品牌或项目分子目录，存放私有风格规范与素材说明。路径常量见 `lib/referencePaths.js`。
+
+| 子目录 | 入口文件 |
+|--------|----------|
+| `aipoch/` | `AIPOCH-DESIGN-SYSTEM.md` |
+| `cyber-taoist/` | `cyber-taoist-real.md` |
+| `open-design/` | `open-design-editorial-monocle.md` |
+| `youtube-thumbnail/` | `youtube-thumbnail-system.md` |
+
 ## 进一步阅读
 
+- [references/README.md](references/README.md) · 本地参考子目录说明
 - [SKILL.md](SKILL.md) · Skill 认知入口
 - [docs/reference.md](docs/reference.md) · 索引与核心口诀
 - [docs/examples.md](docs/examples.md) · 5 类任务示例

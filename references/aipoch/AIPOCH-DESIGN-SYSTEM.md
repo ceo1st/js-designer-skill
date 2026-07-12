@@ -3,6 +3,7 @@
 > **来源**: https://www.aipoch.com（2026-05-18 完整 HTML + CSS 逆向）
 > **用途**: AIPOCH 品宣 PPT 设计风格基准
 > **状态**: ✅ 基于源码，非推测
+> **同目录素材**: `aipoch-css1.css`（Tailwind 编译样式）、`aipoch-css2.css`（字体加载）
 
 ---
 

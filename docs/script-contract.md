@@ -212,6 +212,25 @@ Writes `consistency_result.json` in `<outputDir>/<sessionName>/` containing:
 
 If `GPT_IMAGE_CONSISTENCY_ENABLED=false`, the command exits early with a clear feature-disabled error.
 
+## Task-specific scripts
+
+These scripts are not exposed as Skill tools. They wrap the same gpt-image-2 generation API for one-off batch tasks and read slide/style data from `lib/`.
+
+| Script | Purpose | Reference source |
+|---|---|---|
+| `scripts/gen-single.js` | Generate one AIPOCH board slide by index | `lib/boardSlides.js` → `references/aipoch/AIPOCH-DESIGN-SYSTEM.md` |
+| `scripts/generate-board-slides.js` | Generate all AIPOCH board slides in sequence | same as above |
+
+```bash
+# Generate slide index 0 (Slide 4 - 历史复盘)
+node scripts/gen-single.js 0
+
+# Generate all 5 board slides
+node scripts/generate-board-slides.js
+```
+
+Path constants for all `references/` subdirectories: `lib/referencePaths.js`.
+
 ## Review priorities after any execution
 
 1. text correctness

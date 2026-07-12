@@ -17,6 +17,20 @@ Agents should load a specific card on demand rather than reading everything here
 | running a real task end to end | [workflows/](workflows/) |
 | picking a ready-made example | [examples.md](examples.md) |
 | bind scripts to CLI / tools | [script-contract.md](script-contract.md) |
+| load local brand / project style specs | [../references/README.md](../references/README.md) |
+
+## Local References (`references/`)
+
+For task-specific brand or project style systems, load the matching subdirectory before writing prompts. Path constants live in `lib/referencePaths.js`.
+
+| Subdirectory | Entry file | Typical use |
+|---|---|---|
+| `aipoch/` | `AIPOCH-DESIGN-SYSTEM.md` | AIPOCH corporate / board presentation slides |
+| `cyber-taoist/` | `cyber-taoist-real.md` | JS Cyber-Taoist posters and characters |
+| `open-design/` | `open-design-editorial-monocle.md` | Editorial Monocle magazine aesthetic |
+| `youtube-thumbnail/` | `youtube-thumbnail-system.md` | YouTube / video thumbnails with real-person edit |
+
+These are local, private inputs. Reusable methodology stays in `docs/`.
 
 ## Core Aphorisms (the five that never change)
 
