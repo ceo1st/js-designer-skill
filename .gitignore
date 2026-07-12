@@ -1,7 +1,5 @@
 # Local / project
 work_dir/
-references/*
-!references/README.md
 
 # Dependencies
 node_modules/
