@@ -18,6 +18,9 @@ references/
 │   └── cyber-taoist-character-prompt.md
 ├── open-design/                    open-design 项目风格参考
 │   └── open-design-editorial-monocle.md
+├── sketchnote-editorial/           X Article 手绘信息图（皱纸 sketchnote）
+│   ├── design.md                   完整风格系统 + prompt 模板 + 样例索引
+│   └── samples/                    风格母版与验证样例（jpg/png）
 └── youtube-thumbnail/              YouTube 封面生成体系
     └── youtube-thumbnail-system.md
 ```
@@ -29,6 +32,7 @@ references/
 | AIPOCH 品宣 / 董事会 PPT | `aipoch/AIPOCH-DESIGN-SYSTEM.md` |
 | JS 赛博道家海报 / 人物 | `cyber-taoist/cyber-taoist-real.md` |
 | Editorial Monocle 杂志风 | `open-design/open-design-editorial-monocle.md` |
+| X Article 手绘信息图 / 教程风 sketchnote | `sketchnote-editorial/design.md` |
 | YouTube / 视频封面 | `youtube-thumbnail/youtube-thumbnail-system.md` |
 
 代码中的路径常量见 `lib/referencePaths.js`。
